@@ -1,0 +1,47 @@
+# 1-2 задание
+def num_translate(i):
+  
+  num_dict = {'one': 'один', 
+             'two': 'два',
+             'three': 'три',
+             'four': 'четыре',
+             'five': 'пять',
+             'six': 'шесть',
+             'seven': 'семь',
+             'eight': 'восемь',
+             'nine': 'девять',
+             'ten': 'десять'}
+  if i in num_dict:
+          return f'"{(num_dict[i].capitalize())}"'
+while True:
+    i = input('Введите число на англисском с маленькой буквы: ')
+    print(num_translate(i))
+
+
+
+# 3 задание
+
+def thesaurus(*names):
+  pool = {}
+  for i in names:
+    n=i[0]
+    pool.setdefault(n,[])
+    pool[n].append(i)
+  print(pool, )
+  return pool
+
+thesaurus("Иван", "Мария", "Петр", "Илья")
+
+  
+  # 5 задание
+
+from random import choice
+nouns = ["автомобиль", "лес", "огонь", "город", "дом"]
+n = choice(nouns)
+from random import choice
+adverbs = ["сегодня", "вчера", "завтра", "позавчера", "ночью"]
+adv = choice(adverbs)
+from random import choice
+adjectives = ["веселый", "яркий", "зеленый", "утопичный", "мягкий"]
+adj = choice(adjectives)
+print(f'{n}, {adv}, {adj}')
