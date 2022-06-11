@@ -1,0 +1,75 @@
+# 3 задание
+HOBBY = 'hobby.csv'
+USERS = 'users.csv'
+RESULT = 'result.txt'
+names = []
+for i in open('users.csv'):
+  names.append(i[:-1])
+  
+#print(names)
+
+hobbies = []
+for i in open('hobby.csv'):
+  hobbies.append(i)
+
+
+
+try:
+    with open(RESULT, 'r') as f:
+      temp = f.read()
+except FileNotFoundError:
+    with open(RESULT, 'w') as f:
+        temp = ''
+
+
+for i in range(len(names)):
+  temp += f'{names[i]}: {hobbies[i]}'
+with open(RESULT, 'w') as f:
+  f.write(temp)
+
+
+
+# 1 задание 
+  def parse_log_line(log_line: str):
+    ip_address, log_line = log_line.split(' - - ')
+    date, log_line = log_line.split('] ')
+
+    date = date.lstrip('[')
+
+    request, other_info = log_line.rsplit(' "-" ')
+    other_info = other_info.strip('"')
+    request = request.replace('"', '').split(' ')
+
+    return ip_address, date, *request, other_info
+
+
+lines = ['93.180.71.3 - - [17/May/2015:08:05:32 +0000] "GET /downloads/product_1 HTTP/1.1" 304 0 "-" "Debian APT-HTTP/1.3 (0.8.16~exp12ubuntu10.21)"',
+         '93.180.71.3 - - [17/May/2015:08:05:23 +0000] "GET /downloads/product_1 HTTP/1.1" 304 0 "-" "Debian APT-HTTP/1.3 (0.8.16~exp12ubuntu10.21)"',
+         '80.91.33.133 - - [17/May/2015:08:05:24 +0000] "GET /downloads/product_1 HTTP/1.1" 304 0 "-" "Debian APT-HTTP/1.3 (0.8.16~exp12ubuntu10.17)"']
+parsed_lines = [parse_log_line(line) for line in lines]
+
+# 2 задание, так вроде можно вычеслить IP если я правильно понял
+import re
+from collections import Counter
+ 
+f = open('access.log')
+data = re.findall('[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}', f.read())
+f.close()
+for ip in Counter(data).most_common(10): # топ 10, чтобы получить
+    print (ip[0])
+
+# 6 что-то похожее на блокнот если я правильно понял
+
+FILE = 'note.txt'
+price = input('Число: ')
+
+with open(f'{FILE}', 'a') as file:
+    file.write('{}'.format(price))
+  
+with open(f'{FILE}', 'r') as file:
+    cont = file.read()
+
+print(cont)
+
+
+
