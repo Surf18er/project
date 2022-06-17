@@ -1,0 +1,67 @@
+# 1 задание
+import shutil
+import os
+from pathlib import Path
+
+main = 'my_project'
+dir_ = ['settings','mainapp','adminapp','authapp']
+if not os.path.exists(main):
+  for i in dir_:
+    path = os.path.join(main, i)
+    os.makedirs(path)
+
+# 4 задание 
+import os
+
+directory = ''
+groups = [100, 1000, 10000, 100000]  
+result = dict.fromkeys(groups, 0)
+
+for path_from_top, subdirs, files in os.walk(directory):
+    for file in files:
+        path = os.path.join(path_from_top, file)
+        i = os.path.getsize(path)       
+prev_i = 0
+for i in groups:
+    print(f"Файлов размером от {prev_i} до {i} : {result[i]}") # по мому так логичнее чем писать количество файлов равное 100,1000...
+    prev_i = i
+
+# 3 задание
+import os
+import shutil
+
+html_files = []
+
+for address, dirs, files in os.walk("my_project"):
+    for file in files:
+        if file.endswith(".html"):
+            html_files.append(os.path.join(f"{address}/{file}"))
+
+for path in html_files:
+    path_lst = path.split("/")
+    path_str = ("/").join(path_lst[0:-1])
+    shutil.copytree(path_str, f"my_project/templates/{path_lst[-2]}", dirs_exist_ok=True)
+
+    
+
+
+# 3 задание хотел по другому сделать но ни как не получалось. Я хотлел создать my_project туда добавить templates, в templates добавить mainapp и authapp и потом в них уже добавить файлы html но по простому и по порядку както не получалось. Если вы поняли мой замысл может знаете ли как можно было это реализовать? 
+  
+#Я так изначально хотле но ни как не плучалось
+
+main = 'my_project'
+dir = ['itemplates']
+tem = ['mainapp, authapp']
+mai =['base.html, index.html']
+aut = ['base.html, index.html']
+
+if not os.path.exists(main):
+  for i in dir:
+    path = os.path.join(main, i)
+    os.makedirs(path)# так мы добавим файл templates в my_project 
+
+# и дальше я хотле похожим путем добавлять нужные файлы в нужные файлы
+   for i in tw:
+     path = os.path.join(src, i)
+     os.makedirs(path)
+     ..
