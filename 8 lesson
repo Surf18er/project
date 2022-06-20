@@ -1,0 +1,69 @@
+# 1 задание 
+import re
+em = input('Введите почту:')
+EMAIL = re.compile(r'(^\w+)@((\w+).(\w{2,}))$')
+
+
+def email_parse(em):
+    result_dict = {}
+
+    try:
+        if EMAIL.match(em):
+            result = re.split(r'@', em)
+            result_dict['username'] = result[0]
+            result_dict['domain'] = result[1]
+        else:
+            raise ValueError
+
+    except ValueError:
+        return print(f'ValueError: Миша,не верно,давай по новой: {em}')
+
+    return result_dict
+
+
+if __name__ == '__main__':
+    print(email_parse(em))
+
+# 3 задание
+
+def type_logger(fun):
+    def works(*args):
+        result = {i: type(i) for i in args}
+        return result
+    return works
+
+
+@type_logger
+def calc_cube(*args):
+    res = [arg**3 for arg in args]
+    return res
+
+
+if __name__ == '__main__':
+    a = calc_cube(3)
+    print(a)
+    b = calc_cube(5)
+    print(b)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
