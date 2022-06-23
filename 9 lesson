@@ -1,0 +1,113 @@
+# 1 задание
+import time
+
+class TrafficLigh:
+    def __init__(self, red, yel, gre):
+      self.red = red
+      self.yel = yel
+      self.gre = gre
+
+
+    def print_tf(self):
+      print(f'Сейчас горит {self.red} цвет')
+      time.sleep(7)
+      print(f'Сейчас горит {self.yel} цвет')
+      time.sleep(2)
+      print(f'Сейчас горит {self.gre} цвет')
+      time.sleep(4)
+
+
+Light = TrafficLigh('карасный', 'желтый','зеленый')
+
+Light.print_tf()
+
+# 2 задание
+
+class Road:
+    def __init__(self, length, width, weight, depth):
+      self._length = length
+      self._width = width
+      self._weight = weight
+      self._depth = depth
+    
+
+
+    def mult(self):
+      mult = self._length * self._width * self._weight * self._depth
+      print(f' Масса асфальта {mult // 1000} т')
+            
+
+
+
+
+numbers = Road(1000,50,25,5)
+
+numbers.mult()
+
+# 3 задание
+class worker:
+    __income = {
+        'salary': 2500000,
+        'bonus in %': 40 }
+
+    def __init__(self, name, surname, position):
+     
+      self._name = name
+      self._surname = surname
+      self._position = position
+      self.income = self.__income
+     
+
+    def get_full_name(self):
+      print(f'Полное имя сотрудника {self._name} {self._surname}')
+
+    def get_total_income(self):
+      print(f"Годовая ЗП составлет {self.income['salary']}$ + премия {self.income['salary']//100*40}$")
+
+ak = worker('Elon','Mask','CEO')
+ak.get_full_name()
+ak.get_total_income()
+
+# 5 задание
+class Stationery:
+    
+    def __init__(self, title):
+        self.title = title
+
+
+class Pen(Stationery):
+    def __init__(self, title):
+        super().__init__(title)
+        self.title = title
+        
+    def draw(self):
+        print(f'"{self.title}" - написано ручкой')
+
+class Pencil(Stationery):
+    def __init__(self, title):
+        super().__init__(title)
+        self.title = title
+
+    def draw(self):
+        print(f'"{self.title}" - написано карандашом')
+
+class Handle(Stationery):
+    def __init__(self, title):
+        super().__init__(title)
+        self.title = title
+
+    def draw(self):
+        print(f'"{self.title}" - написано маркером')
+
+
+pen = Pen('Астана столица Казахстана')
+pen.draw()
+
+
+pencil = Pencil('Москва столица РФ')
+pencil.draw()
+
+
+handle = Handle('Берлин столица Германии')
+handle.draw()
+  
