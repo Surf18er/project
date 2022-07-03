@@ -1,0 +1,108 @@
+# 1 задание 
+class Matrix:
+  def __init__(self,matrix1,matrix2=None):
+    self.matrix1 = matrix1
+    self.martrix2 = matrix2
+
+  def __str__(self):
+    if self.martrix2 is None:
+      for i in self.matrix1:
+        print(''.join(map(str, i)))
+    else:
+      for i in self.matrix1:
+        print(''.join(map(str, i)))
+     
+      for j in self.martrix2:
+        print(''.join(map(str, j)))
+
+  def __add__(self,other):
+    return Matrix(self.matrix1 + self.other) 
+
+m1 = Matrix([[1 ,0 ,2 ],[5,10,0],[2,1,4]])
+m1.__str__()
+m2 = Matrix([[1,1,1],[0,1,0],[2,7,5]])
+m2.__str__()
+
+# 2 задание
+class clothes:
+    def __init__(self, name):
+        self.name = name
+
+   
+
+
+class coat(clothes):
+    def __init__(self, v):
+        self.v = v
+
+    @property
+    def calculation(self):
+        return f'{self.v / 6.5 + 0.5} m '
+
+    
+
+
+class suit(clothes):
+    def __init__(self, h):
+        self.h = h
+
+    @property
+    def calculation(self):
+        return f'{2 * self.h + 0.3} m '
+
+    
+
+c = coat(10)
+print(c.calculation)
+
+h = suit(100)
+print(h.calculation)
+
+# 3 задание
+
+class Cell:
+    def __init__(self,num):
+        self.num = num
+
+      
+    def __str__(self):
+        return f'{self.num} клеток'
+      
+    def __add__(self, other):
+        cell_a = Cell(self.num + other.num)
+        return cell_a
+    
+    def __sub__(self, other):
+        cell_s = Cell(self.num - other.num)
+        return cell_s
+
+    def __mul__(self, other):
+        cell_m = Cell(self.num * other.num)
+        return cell_m
+
+    def __floordiv__(self, other):
+        cell_f = Cell(self.num // other.num)
+        return cell_f
+
+    def __truediv__(self, other):
+        cell_t = Cell(self.num / other.num)
+        return cell_t
+
+   
+number1 = Cell(120)
+number2 = Cell(100)
+
+print(number1 + number2)  
+
+print(number1- number2)  
+print(number1 - number2)
+
+print(number1 * number2)  
+
+print(number1 // number2) 
+
+print(number1 / number2) 
+
+
+
+
