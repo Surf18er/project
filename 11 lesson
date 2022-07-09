@@ -1,0 +1,92 @@
+# 1 задание
+
+class Date:
+    GOOD = '18,01,2004'
+
+    def __init__(self, date):
+        self.date = date
+
+    @classmethod    
+    def divide_date(self, date):
+        splited_date = date.split('.')
+        day = int(splited_date[0])
+        month = int(splited_date[1])
+        year = int(splited_date[2])
+        return day, month, year
+
+    #@staticmethod
+    #def age(self, new_age):
+      #return new_age <= Date.GOOD
+  
+    
+    
+
+date1 = '18.01.2004'
+date2 = '7.07.2022'
+
+print(Date.divide_date(date1))
+print(Date.divide_date(date2))
+# 2 задание
+
+
+class MyDivisionError(Exception):
+    def __init__(self, text):
+        self.text = text
+
+
+def divide_nums(num1=0, num2=0):
+    while True:
+        num1 = int(input('Введите первое число: '))
+        num2 = int(input('Введите второе число: '))
+        if num2 == 0:
+            raise MyDivisionError('ERROR: давай по новой :)')
+        else:
+            print(f' {num1/num2}')
+
+
+try:
+  divide_nums()
+except MyDivisionError as err:
+    print(err)
+
+
+# 3 задание
+class NotNumberError(Exception):
+    def __init__(self, text):
+        self.text = text
+
+
+def make_only_digit_lst(user_d=0):
+    user_d_lst = []
+    while user_d != 'stop':
+        try:
+            user_d = input('Пожалуйста напишите: ')
+            if not user_d.isdigit():
+                raise NotNumberError(f'-<|>- ERROR: NotNumberError: "{user_d}" не верно -<|>-')
+            user_d_lst.append(user_d)
+            print(f'"{user_d}" это ок')
+        except NotNumberError as err:
+            print(err)
+
+    print(f' {user_d_lst}')
+
+# 7 задание
+
+import math
+
+
+class Complex_number(object):
+
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+        self.x = complex(a, b)
+
+    def __add__(self, other):
+        return f'sum {self.x} и {other.x}: {complex((self.a + other.a), (self.b + other.b))}'
+
+
+
+num1 = Complex_number(8, 3)
+num2 = Complex_number(1, 7)
+print(num1 + num2)
